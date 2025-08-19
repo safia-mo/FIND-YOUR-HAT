@@ -18,10 +18,9 @@ body {
 
 #game-board {
   position: absolute;
-  top: 244px;  /* Y position from Figma */
-  left: 209px; /* X position from Figma */
-  width: 1024px;
-  height: 792px;
+  left: 14.44vw; /* X position from Figma */
+  width: 71.04vw;
+  height: 60.74vh;
   background-color: #23606e;
   border-radius: 15px;
   padding: 20px;
@@ -37,7 +36,7 @@ body {
 
 .game-title {
   font-family: 'Jersey 25', sans-serif;
-  font-size: 180px;
+  font-size: clamp(32px, 12.5vw, 180px);
   color: #facfce;
   position: static;
   text-align: center;
