@@ -124,7 +124,7 @@ background-color: #026773;
 #game-board {
   width: min(60vw, 60vh);
   max-width: 600px;
-  height: min(60vw, 560vh);
+  height: min(60vw, 60vh);
   max-height: 600 px;
   background-color: #23606e;
   box-sizing: border-box;
