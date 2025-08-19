@@ -123,8 +123,8 @@ background-color: #026773;
 
 #game-board {
   width: min(55vw, 55vh);
+  aspect-ratio: 1 / 1;
   max-width: 550px;
-  height: min(55vw, 55vh);
   max-height: 550px;
   background-color: #23606e;
   box-sizing: border-box;
