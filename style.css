@@ -8,8 +8,15 @@ body {
   font-family: 'Jersey 25', sans-serif; 
 }
 
+#game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
 
-.game-board {
+#game-board {
   position: absolute;
   top: 244px;  /* Y position from Figma */
   left: 209px; /* X position from Figma */
@@ -32,9 +39,10 @@ body {
   font-family: 'Jersey 25', sans-serif;
   font-size: 180px;
   color: #facfce;
-  position: absolute;
-  top: 50px; /* adjust as needed */
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;
+  text-align: center;
+  top: auto; /* adjust as needed */
+  left: auto;
+  transform: none;
   margin: 0;
 }
