@@ -1,6 +1,6 @@
 
 html, body {
-  background-color: #008F8C;
+    background-color: #026773;
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -97,6 +97,14 @@ html, body {
 
 }
 
+#rules-box,
+.message-box {
+  width: min(80vw, 400px);
+  max-width: 90vw;
+  padding: clamp(10px, 5vw, 40px);
+  font-size: clamp(0.9rem, 2vw, 1.3rem);
+}
+
 #game-container {
   display: flex;
   flex-direction: column;
@@ -114,10 +122,10 @@ background-color: #026773;
 }
 
 #game-board {
-  width: min(55vw, 55vh);
-  max-width: 550px;
-  height: min(55vw, 55vh);
-  max-height: 550px;
+  width: min(60vw, 60vh);
+  max-width: 600px;
+  height: min(60vw, 560vh);
+  max-height: 600 px;
   background-color: #23606e;
   box-sizing: border-box;
   color: #ffffff;
