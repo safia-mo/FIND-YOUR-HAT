@@ -106,7 +106,7 @@ html, body {
   width:100vw;
   padding: 20px 0;
   box-sizing: border-box;
-background-color: #008F8C;
+background-color: #026773;
 
 }
 #play-again-btn:active {
@@ -114,10 +114,10 @@ background-color: #008F8C;
 }
 
 #game-board {
-  width: min(50vw, 50vh);
-  max-width: 500px;
-  height: min(50vw, 50vh);
-  max-height: 500px;
+  width: min(55vw, 55vh);
+  max-width: 550px;
+  height: min(55vw, 55vh);
+  max-height: 550px;
   background-color: #23606e;
   box-sizing: border-box;
   color: #ffffff;
