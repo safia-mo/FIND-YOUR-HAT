@@ -154,22 +154,36 @@ document.addEventListener("keydown", (e) => {
 
     }
 
-  else if (status === "hat") {
-    myField.showMessage("You found the hat!", false);
-   gameActive = false;
+else if (status === "hat") {
+  myField.showMessage("You found the hat!", false); 
+  gameActive = false;
   currentLevel++;
   updateLevelDisplay();
 
   setTimeout(() => {
-      document.getElementById("message-overlay").classList.add("hidden"); 
-      myField = new Field(Field.generateField(currentLevel), currentLevel);
-      myField.print();
-      gameActive = true;
-    }, 750);
-   }
-   else if (status === "hole" || status === "out") {
-    // Player lost
+    const overlay = document.getElementById("message-overlay");
+    overlay.classList.add("hidden"); 
+  }, 700);
+
+  setTimeout(() => {
+    myField = new Field(Field.generateField(currentLevel), currentLevel);
+    myField.print();
+    gameActive = true;
+  }, 750);
+}else if (status === "hole" || status === "out") {
     myField.showMessage("Game Over!", true);
     gameActive = false;
-   }
+
+    setTimeout(() => {
+    currentLevel = 1;
+    updateLevelDisplay(); 
+    const overlay = document.getElementById("message-overlay");
+    overlay.classList.add("hidden"); 
+
+    myField = new Field(Field.generateField(currentLevel), currentLevel);
+    myField.print();
+    gameActive = true;
+  }, 1000); 
+}
+   
 });

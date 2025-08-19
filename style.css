@@ -15,13 +15,13 @@ html, body {
   color: #facfce;
   position: static;
   text-align: center;
-  top: auto; /* adjust as needed */
+  top: auto; 
   left: auto;
   transform: none;
   margin: 0;
 }
 #level-display {
-  position: static;
+  position: relative;
   text-align: center;
   margin-top: 10px;
   left: 50%;
@@ -125,10 +125,18 @@ html, body {
   line-height: 1.5;
   margin: 0 auto;
   display: block;
-  border-radius: 30px;
+  border-radius: 0; 
   overflow: hidden;
+  border: 4px solid #FACFCE; 
+  box-shadow: 6px 6px 0 #023535; 
 }
 
+#rules-box,
+.message-box,
+#start-btn,
+#play-again-btn {
+  border-radius: 0; 
+}
 .field-grid {
   display: grid;
   height: 100%;
