@@ -5,10 +5,11 @@ const pathCharacter = "*";
 
 let myField;
 let gameActive = false;
+let currentLevel = 1;
 
 document.getElementById("start-btn").onclick = function() {
   document.getElementById("rules-box").classList.add("hidden");
-  myField = new Field(Field.generateField());
+  myField = new Field(Field.generateField(currentLevel), currentLevel);
   myField.print();
  gameActive = true;
 };
@@ -16,17 +17,18 @@ document.getElementById("start-btn").onclick = function() {
 
 document.getElementById("play-again-btn").onclick = function() {
   document.getElementById("message-overlay").classList.add("hidden");
-  myField = new Field(Field.generateField());
+  myField = new Field(Field.generateField(currentLevel), currentLevel);
   myField.print();
   gameActive = true;
 
 }
 
 class Field {
-  constructor(field) {
+  constructor(field, level = 1) {
     this.field = field;
     this.playerRow = 0;
     this.playerCol = 0;
+    this.level = level;
   }
   
 
@@ -70,49 +72,55 @@ checkStatus() {
     return "safe";
   }};
 
-static generateField() {
-    let rows = 3;
-    let columns = 3;
-    let field = [];
-    for (let i = 0; i < rows; i++) {
-      let row = [];
-      for (let j = 0; j < columns; j++) {
-        row.push(fieldCharacter);
-      }
-      field.push(row);
+static generateField(level = 1) {
+  let size = 2 + level;
+  let rows = size;
+  let columns = size;
+  let field = [];
+  for (let i = 0; i < rows; i++) {
+    let row = [];
+    for (let j = 0; j < columns; j++) {
+      row.push(fieldCharacter);
     }
-
-    let numHoles = 2;
-    while (numHoles > 0) {
-      let randomRow = Math.floor(Math.random() * rows);
-      let randomCol = Math.floor(Math.random() * 3);
-      if (
-        (randomRow !== 0 || randomCol !== 0) &&
-        field[randomRow][randomCol] !== hole
-      ) {
-        field[randomRow][randomCol] = hole;
-        numHoles--;
-      }
+    field.push(row);
+  }
+  let hatRow, hatCol;
+  let hatPlaced = false;
+  while (!hatPlaced) {
+    let randomRow = Math.floor(Math.random() * rows);
+    let randomCol = Math.floor(Math.random() * columns);
+    if (
+      (randomRow > 1 || randomCol > 1) && // not in 2x2 safe zone
+      field[randomRow][randomCol] !== hole
+    ) {
+      field[randomRow][randomCol] = hat;
+      hatRow = randomRow;
+      hatCol = randomCol;
+      hatPlaced = true;
     }
-    let hatPlaced = false;
-    while (!hatPlaced) {
-      let randomRow = Math.floor(Math.random() * rows);
-      let randomCol = Math.floor(Math.random() * columns);
-      if (
-        (randomRow !== 0 || randomCol !== 0) && // not the start
-        field[randomRow][randomCol] !==  hole // not a hole
-      ) {
-        field[randomRow][randomCol] = hat;
-        hatPlaced = true;
-      }
-    }
-    field[0][0] = pathCharacter;
-    return field;
+  }
+  function isNearHat(r, c, hatRow, hatCol) {
+    return Math.abs(r - hatRow) <= 1 && Math.abs(c - hatCol) <= 1;
   }
 
-};
- 
+  let numHoles = Math.floor((rows * columns * 0.2));
+  while (numHoles > 0) {
+    let randomRow = Math.floor(Math.random() * rows);
+    let randomCol = Math.floor(Math.random() * columns);
+    if (
+      (randomRow > 1 || randomCol > 1) && // not in 2x2 safe zone
+      field[randomRow][randomCol] !== hole &&
+      field[randomRow][randomCol] !== hat &&
+      !isNearHat(randomRow, randomCol, hatRow, hatCol)
+    ) {
+      field[randomRow][randomCol] = hole;
+      numHoles--;
+    }
+  }
 
+  field[0][0] = pathCharacter;
+
+}};
 
 document.addEventListener("keydown", (e) => {
     if (!myField || !gameActive) return;
@@ -131,6 +139,8 @@ document.addEventListener("keydown", (e) => {
 
    if (status === "hat") {
   myField.showMessage("You found the hat!");
+  gameActive = false;
+  currentLevel++;
 } else if (status === "hole" || status === "out") {
   myField.showMessage("Game Over!");
   gameActive = false;
