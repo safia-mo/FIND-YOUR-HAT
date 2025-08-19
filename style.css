@@ -11,7 +11,7 @@ html, body {
 }
 .game-title {
   font-family: 'Jersey 25', sans-serif;
-  font-size: clamp(32px, 12.5vw, 180px);
+  font-size: clamp(24px, 8vw, 100px);
   color: #facfce;
   position: static;
   text-align: center;
@@ -111,7 +111,7 @@ html, body {
 #game-board {
   width: 55vw;
   max-width: 600px;
-  height: 55vw;
+  height: 55vh;
   max-height: 600px;
   background-color: #23606e;
   box-sizing: border-box;
