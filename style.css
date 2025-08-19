@@ -32,12 +32,16 @@ html, body {
 #play-again-btn {
   margin-top: 20px;
   font-size: 1.2em;
-  padding: 10px 30px;
-  border-radius: 10px;
-  border: none;
+  padding: 30px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   background: #FACFCE;
   color: #23606e;
   cursor: pointer;
+  min-width: 220px;
+  max-width: 90vw;
+  position: relative;
 }
 
 .close-btn {
