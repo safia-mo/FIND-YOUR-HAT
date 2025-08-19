@@ -9,9 +9,17 @@ class Field {
     this.playerRow = 0;
     this.playerCol = 0;
   }
+
 print() {
-    document.getElementById("game-board").innerHTML =
-    this.field.map(row => row.join(" ")).join("<br>");
+  const board = document.getElementById("game-board");
+  let html = '<div class="field-grid">';
+  for (let row of this.field) {
+    for (let cell of row) {
+      html += `<div class="field-cell">${cell}</div>`;
+    }
+  }
+  html += '</div>';
+  board.innerHTML = html;
 }
 
 move(direction) {
@@ -78,6 +86,8 @@ static generateField() {
   }
 
 }
+
+
 
 const myField = new Field(Field.generateField());
 myField.print();
