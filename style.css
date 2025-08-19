@@ -107,7 +107,6 @@ html, body {
   align-items: center;
   font-size: 2em; 
   border: 1px solid transparent; 
-  font-size: clamp(0.8vw, 2em, 3vw);
 }
 
 #game-board, .field-grid {
