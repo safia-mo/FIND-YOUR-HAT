@@ -43,6 +43,10 @@ html, body {
   box-shadow: 6px 6px 0 #023535;
   border-radius: 0;
   text-align: center;
+  max-width: 90%;
+  max-height: 90%;
+  width: auto;
+  height: auto;
 
 }
 #rules-box.hidden { display: none; }
