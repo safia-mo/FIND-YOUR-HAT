@@ -119,6 +119,7 @@ static generateField(level = 1) {
   }
 
   field[0][0] = pathCharacter;
+  return field;
 
 }};
 
