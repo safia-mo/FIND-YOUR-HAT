@@ -93,11 +93,13 @@ html, body {
   line-height: 1.5;
   margin: 0 auto;
   border-radius: 30px;
+  overflow: hidden;
 }
 
 .field-grid {
   display: grid;
   height: 100%;
+  width: 100%;
 }
 .field-cell {
   display: flex;

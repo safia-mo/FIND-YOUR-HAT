@@ -35,7 +35,11 @@ print() {
   const board = document.getElementById("game-board");
   let columns = this.field[0].length;
   let rows = this.field.length;
-  let html = `<div class="field-grid" style="grid-template-columns: repeat(${columns}, 1fr); grid-template-rows: repeat(${rows}, 1fr); width: 100%; height: 100%;">`;
+  let html = `<div class="field-grid" 
+               style="
+                 grid-template-columns: repeat(${columns}, 1fr); 
+                 grid-template-rows: repeat(${rows}, 1fr);
+               ">`;
   let fontSize = Math.max(1, 4 - columns * 0.3) + "em";
   for (let row of this.field) {
     for (let cell of row) {
@@ -45,9 +49,6 @@ print() {
   html += '</div>';
   board.innerHTML = html;
 }
-
-
-
 
 showMessage(message) {
     document.getElementById("message-text").textContent = message;
@@ -153,3 +154,14 @@ document.addEventListener("keydown", (e) => {
 }
 
 });
+
+if (status === "hat") {
+  gameActive = false;
+  currentLevel++;
+  updateLevelDisplay();
+
+  setTimeout(() => {
+    myField = new Field(Field.generateField(currentLevel), currentLevel);
+    myField.print();
+    gameActive = true;
+  }, 1000); }
