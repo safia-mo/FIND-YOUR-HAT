@@ -11,8 +11,9 @@ document.getElementById("start-btn").onclick = function() {
   myField.print();
 };
 
-document.getElementById("close-message").onclick = function() {
+document.getElementById("play-again").onclick = function() {
   document.getElementById("message-overlay").classList.add("hidden");
+  myField.print();
 
 class Field {
   constructor(field) {
