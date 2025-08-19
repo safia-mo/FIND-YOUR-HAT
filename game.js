@@ -9,12 +9,15 @@ document.getElementById("start-btn").onclick = function() {
   document.getElementById("rules-screen").classList.add("hidden");
   myField = new Field(Field.generateField());
   myField.print();
+ gameActive = false;
 };
 
 
 document.getElementById("play-again-btn").onclick = function() {
   document.getElementById("message-overlay").classList.add("hidden");
   myField.print();
+  gameActive = false;
+
 }
 
 class Field {
@@ -110,7 +113,7 @@ static generateField() {
 
 
 document.addEventListener("keydown", (e) => {
-    if (!myField) return;
+    if (!myField || !gameActive) return;
 
     if (e.key === "ArrowUp") myField.move("up");
     if (e.key === "ArrowDown") myField.move("down");
