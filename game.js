@@ -3,6 +3,8 @@ const hole = "O";
 const fieldCharacter = "░";
 const pathCharacter = "*";
 
+let myField;
+
 class Field {
   constructor(field) {
     this.field = field;
@@ -87,13 +89,19 @@ static generateField() {
   }
 
 }
-const myField = new Field(Field.generateField());
 
 document.getElementById("start-btn").onclick = function() {
   document.getElementById("rules-screen").classList.add("hidden");
   myField = new Field(Field.generateField());
   myField.print();
 
+};
+
+
+document.getElementById("start-btn").onclick = function() {
+  document.getElementById("rules-screen").classList.add("hidden");
+  myField = new Field(Field.generateField());
+  myField.print();
 };
 
 
@@ -110,11 +118,16 @@ document.addEventListener("keydown", (e) => {
        myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
     }
     myField.print();
+    function showMessage(message) {
+    document.getElementById("message-text").textContent = message;
+    document.getElementById("message-overlay").classList.remove("hidden");
+   }
 
-    if (status === "hat") {
-    document.getElementById("game-board").innerHTML = "<h2>You found the hat!</h2>";
-    } else if (status === "hole" || status === "out") {
-    document.getElementById("game-board").innerHTML = "<h2>Game Over!</h2>";
-    }
+   if (status === "hat") {
+  showMessage("You found the hat!");
+} else if (status === "hole" || status === "out") {
+  showMessage("Game Over!");
+}
+
 
 });
