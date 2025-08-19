@@ -56,10 +56,11 @@ print() {
   board.innerHTML = html;
 }
 
-showMessage(message) {
+showMessage(message, showButton = true) {
     document.getElementById("message-text").textContent = message;
     document.getElementById("message-overlay").classList.remove("hidden");
-  }
+    document.getElementById("play-again-btn").style.display = showButton ? "block" : "none";
+}
 
 move(direction) {
   if (direction === "up") this.playerRow--;
@@ -163,7 +164,7 @@ document.addEventListener("keydown", (e) => {
       myField = new Field(Field.generateField(currentLevel), currentLevel);
       myField.print();
       gameActive = true;
-    }, 1000);
+    }, 750);
    }
    else if (status === "hole" || status === "out") {
     // Player lost
