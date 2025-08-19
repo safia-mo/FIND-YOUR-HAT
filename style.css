@@ -13,7 +13,7 @@ html, body {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%, -50%);
+  transform: translate(-50%, -50%);
   z-index: 10;
 }
 #rules-box.hidden { display: none; }
@@ -35,7 +35,7 @@ html, body {
 
 #message-overlay {
   position: fixed;
-  top: 50%px; 
+  top: 50%; 
   left: 50%;
   transform: translateX(-50%, -50%);
   z-index: 10;
