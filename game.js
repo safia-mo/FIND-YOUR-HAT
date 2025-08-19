@@ -36,14 +36,15 @@ print() {
   let columns = this.field[0].length;
   let rows = this.field.length;
 
-const cellWidth = board.clientWidth / columns;
-const cellHeight = board.clientHeight / rows;
-const fontSize = Math.min(cellWidth, cellHeight) * 0.6; // 60% of cell
-  let html = `<div class="field-grid" style="grid-template-columns: repeat(${columns}, 1fr); grid-template-rows: repeat(${rows}, 1fr);">`;
-  
+  const cellWidth = board.clientWidth / columns;
+  const cellHeight = board.clientHeight / rows;
+  const fontSize = Math.min(cellWidth, cellHeight) * 0.6; // 60% of cell
+
+  let html = `<div class="field-grid" style="display: grid; width:100%; height:100%; grid-template-columns: repeat(${columns}, 1fr); grid-template-rows: repeat(${rows}, 1fr);">`;
+
   for (let row of this.field) {
     for (let cell of row) {
-      html += `<div class="field-cell" style="font-size:${fontSize}px">${cell}</div>`;
+      html += `<div class="field-cell" style="font-size:${fontSize}px; box-sizing:border-box;">${cell}</div>`;
     }
   }
 

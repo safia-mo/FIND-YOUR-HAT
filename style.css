@@ -87,11 +87,11 @@ html, body {
   color: #ffffff;
   font-size: 3vw;
   justify-content: center;
-  display: flex;
   align-items: center;
   text-align: center;
   line-height: 1.5;
   margin: 0 auto;
+  display: block;
   border-radius: 30px;
   overflow: hidden;
 }
@@ -103,16 +103,12 @@ html, body {
 }
 .field-cell {
   display: flex;
+  box-sizing: border-box;
   justify-content: center;
   align-items: center;
   font-size: 2em; 
   border: 1px solid transparent; 
 }
-
-#game-board, .field-grid {
-  overflow: auto;
-}
-
 
 .game-title {
   font-family: 'Jersey 25', sans-serif;
