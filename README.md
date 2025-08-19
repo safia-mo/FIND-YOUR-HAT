@@ -1,1 +1,2 @@
 # FIND-YOUR-HAT
+delete README.md
