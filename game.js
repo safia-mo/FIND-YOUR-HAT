@@ -155,7 +155,7 @@ document.addEventListener("keydown", (e) => {
     }
 
   else if (status === "hat") {
-    myField.showMessage("You found the hat!");
+    myField.showMessage("You found the hat!", false);
    gameActive = false;
   currentLevel++;
   updateLevelDisplay();
@@ -168,7 +168,7 @@ document.addEventListener("keydown", (e) => {
    }
    else if (status === "hole" || status === "out") {
     // Player lost
-    myField.showMessage("Game Over!");
+    myField.showMessage("Game Over!", true);
     gameActive = false;
    }
 });
