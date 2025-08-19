@@ -20,9 +20,9 @@ html, body {
 }
 
 #game-board {
-  width: 80vw;
+  width: 60vw;
   max-width: 600px;
-  height: 80vw;
+  height: 60vw;
   max-height: 600px;
   background-color: #23606e;
   box-sizing: border-box;
