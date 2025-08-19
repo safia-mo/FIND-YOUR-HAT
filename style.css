@@ -130,12 +130,6 @@ html, body {
   box-shadow: 6px 6px 0 #023535; 
 }
 
-#rules-box,
-.message-box,
-#start-btn,
-#play-again-btn {
-  border-radius: 0; 
-}
 .field-grid {
   display: grid;
   height: 100%;
