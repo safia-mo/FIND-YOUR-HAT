@@ -11,10 +11,9 @@ html, body {
 }
 #rules-box{
   position: absolute;
-  top: 60px; left: 50%;
-  align-items: center;
+  top: 60px;
+  left: 50%;
   transform: translateX(-50%);
-  justify-content: center;
   z-index: 10;
 }
 #rules-box.hidden { display: none; }
@@ -35,13 +34,11 @@ html, body {
 }
 
 #message-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: #015958;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
+  position: absolute;
+  top: 60px; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 #message-overlay.hidden { display: none; }
 
@@ -51,7 +48,7 @@ html, body {
   padding: 40px 60px;
   border-radius: 30px;
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 32px ;
 }
 #play-again-btn {
   margin-top: 20px;
@@ -67,19 +64,6 @@ html, body {
   max-width: 90vw;
   position: relative;
 }
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: none;
-  border: none;
-  color: #FACFCE;
-  font-size: 2em;
-  cursor: pointer;
-  line-height: 1;
-}
-
 
 #game-container {
   display: flex;
