@@ -9,6 +9,17 @@ html, body {
   font-family: 'Jersey 25', sans-serif; 
   overflow: hidden;
 }
+#rules-screen {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:#015958;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+}
+#rules-screen.hidden { display: none; }
+
 
 #message-overlay {
   position: fixed;
