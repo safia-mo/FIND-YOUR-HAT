@@ -35,17 +35,17 @@ print() {
   const board = document.getElementById("game-board");
   let columns = this.field[0].length;
   let rows = this.field.length;
-  let html = `<div class="field-grid" 
-               style="
-                 grid-template-columns: repeat(${columns}, 1fr); 
-                 grid-template-rows: repeat(${rows}, 1fr);
-               ">`;
-  let fontSize = Math.max(1, 4 - columns * 0.3) + "em";
+
+  let fontSize = Math.min(3, 3 * (6 / Math.max(rows, columns))) + "vw";
+
+  let html = `<div class="field-grid" style="grid-template-columns: repeat(${columns}, 1fr); grid-template-rows: repeat(${rows}, 1fr);">`;
+  
   for (let row of this.field) {
     for (let cell of row) {
       html += `<div class="field-cell" style="font-size:${fontSize}">${cell}</div>`;
     }
   }
+
   html += '</div>';
   board.innerHTML = html;
 }
