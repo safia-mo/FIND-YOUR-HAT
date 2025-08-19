@@ -10,10 +10,10 @@ html, body {
   overflow: hidden;
 }
 #rules-box{
-  position: absolute;
-  top: 60px;
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%, -50%);
   z-index: 10;
 }
 #rules-box.hidden { display: none; }
@@ -22,9 +22,9 @@ html, body {
   margin-top: 20px;
   font-size: 1.2em;
   padding: 30px 40px;
-  border-radius: 20px;
+  border-radius: 20px #023535;
   text-align: center;
-  box-shadow: 0 8px 32px #F6ABA9;
+  box-shadow: 0 8px 32px #023535;
   background: #FACFCE;
   color: #23606e;
   cursor: pointer;
@@ -34,10 +34,10 @@ html, body {
 }
 
 #message-overlay {
-  position: absolute;
-  top: 60px; 
+  position: fixed;
+  top: 50%px; 
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%, -50%);
   z-index: 10;
 }
 #message-overlay.hidden { display: none; }
@@ -54,9 +54,9 @@ html, body {
   margin-top: 20px;
   font-size: 1.2em;
   padding: 30px 40px;
-  border-radius: 20px;
+  border-radius: 20px #023535;
   text-align: center;
-  box-shadow: 0 8px 32px #F6ABA9;
+  box-shadow: 0 8px 32px #023535;
   background: #FACFCE;
   color: #23606e;
   cursor: pointer;
