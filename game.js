@@ -5,6 +5,15 @@ const pathCharacter = "*";
 
 let myField;
 
+document.getElementById("start-btn").onclick = function() {
+  document.getElementById("rules-screen").classList.add("hidden");
+  myField = new Field(Field.generateField());
+  myField.print();
+};
+
+document.getElementById("close-message").onclick = function() {
+  document.getElementById("message-overlay").classList.add("hidden");
+
 class Field {
   constructor(field) {
     this.field = field;
@@ -24,6 +33,11 @@ print() {
   html += '</div>';
   board.innerHTML = html;
 }
+
+showMessage(message) {
+    document.getElementById("message-text").textContent = message;
+    document.getElementById("message-overlay").classList.remove("hidden");
+  }
 
 move(direction) {
   if (direction === "up") this.playerRow--;
@@ -88,21 +102,7 @@ static generateField() {
     return field;
   }
 
-}
-
-document.getElementById("start-btn").onclick = function() {
-  document.getElementById("rules-screen").classList.add("hidden");
-  myField = new Field(Field.generateField());
-  myField.print();
-
-};
-
-
-document.getElementById("start-btn").onclick = function() {
-  document.getElementById("rules-screen").classList.add("hidden");
-  myField = new Field(Field.generateField());
-  myField.print();
-};
+}};
 
 
 
@@ -128,6 +128,5 @@ document.addEventListener("keydown", (e) => {
 } else if (status === "hole" || status === "out") {
   showMessage("Game Over!");
 }
-
 
 });

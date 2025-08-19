@@ -9,23 +9,11 @@ html, body {
   font-family: 'Jersey 25', sans-serif; 
   overflow: hidden;
 }
-#rules-screen {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: #023535;
-  color: #FACFCE;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
-#rules-screen.hidden { display: none; }
 
 #message-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(2, 53, 53, 0.85);
+  background: #015958;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,6 +38,18 @@ html, body {
   background: #FACFCE;
   color: #23606e;
   cursor: pointer;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #FACFCE;
+  font-size: 2em;
+  cursor: pointer;
+  line-height: 1;
 }
 
 
