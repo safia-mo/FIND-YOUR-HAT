@@ -4,19 +4,21 @@ const fieldCharacter = "░";
 const pathCharacter = "*";
 
 let myField;
+let gameActive = false;
 
 document.getElementById("start-btn").onclick = function() {
   document.getElementById("rules-screen").classList.add("hidden");
   myField = new Field(Field.generateField());
   myField.print();
- gameActive = false;
+ gameActive = true;
 };
 
 
 document.getElementById("play-again-btn").onclick = function() {
   document.getElementById("message-overlay").classList.add("hidden");
+  myField = new Field(Field.generateField());
   myField.print();
-  gameActive = false;
+  gameActive = true;
 
 }
 
@@ -128,9 +130,9 @@ document.addEventListener("keydown", (e) => {
     myField.print();
 
    if (status === "hat") {
-  showMessage("You found the hat!");
+  myField.showMessage("You found the hat!");
 } else if (status === "hole" || status === "out") {
-  showMessage("Game Over!");
+  myField.showMessage("Game Over!");
 }
 
 });
