@@ -133,6 +133,7 @@ document.addEventListener("keydown", (e) => {
   myField.showMessage("You found the hat!");
 } else if (status === "hole" || status === "out") {
   myField.showMessage("Game Over!");
+  gameActive = false;
 }
 
 });
