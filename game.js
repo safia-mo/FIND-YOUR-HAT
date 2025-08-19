@@ -7,7 +7,7 @@ let myField;
 let gameActive = false;
 
 document.getElementById("start-btn").onclick = function() {
-  document.getElementById("rules-screen").classList.add("hidden");
+  document.getElementById("rules-box").classList.add("hidden");
   myField = new Field(Field.generateField());
   myField.print();
  gameActive = true;

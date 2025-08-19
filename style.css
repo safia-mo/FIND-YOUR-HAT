@@ -9,17 +9,30 @@ html, body {
   font-family: 'Jersey 25', sans-serif; 
   overflow: hidden;
 }
-#rules-screen {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background:#015958;
-  display: flex;
+#rules-box{
+  position: absolute;
+  top: 60px; left: 50%;
   align-items: center;
+  transform: translateX(-50%);
   justify-content: center;
-  z-index: 30;
+  z-index: 10;
 }
-#rules-screen.hidden { display: none; }
+#rules-box.hidden { display: none; }
 
+#start-btn {
+  margin-top: 20px;
+  font-size: 1.2em;
+  padding: 30px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 32px #F6ABA9;
+  background: #FACFCE;
+  color: #23606e;
+  cursor: pointer;
+  min-width: 220px;
+  max-width: 90vw;
+  position: relative;
+}
 
 #message-overlay {
   position: fixed;
@@ -46,7 +59,7 @@ html, body {
   padding: 30px 40px;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 32px #F6ABA9;
   background: #FACFCE;
   color: #23606e;
   cursor: pointer;
