@@ -9,6 +9,18 @@ html, body {
   font-family: 'Jersey 25', sans-serif; 
   overflow: hidden;
 }
+#rules-screen {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #023535;
+  color: #FACFCE;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+#rules-screen.hidden { display: none; }
 
 #game-container {
   display: flex;
@@ -63,3 +75,5 @@ html, body {
   transform: none;
   margin: 0;
 }
+
+

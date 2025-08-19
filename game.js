@@ -9,6 +9,7 @@ class Field {
     this.playerRow = 0;
     this.playerCol = 0;
   }
+  
 
 print() {
   const board = document.getElementById("game-board");
@@ -86,14 +87,18 @@ static generateField() {
   }
 
 }
-
-
-
 const myField = new Field(Field.generateField());
-myField.print();
+
+document.getElementById("start-btn").onclick = function() {
+  document.getElementById("rules-screen").classList.add("hidden");
+  myField = new Field(Field.generateField());
+  myField.print();
+
+};
+
+
 
 document.addEventListener("keydown", (e) => {
-
     if (e.key === "ArrowUp") myField.move("up");
     if (e.key === "ArrowDown") myField.move("down");
     if (e.key === "ArrowLeft") myField.move("left");
@@ -102,13 +107,14 @@ document.addEventListener("keydown", (e) => {
 
     const status = myField.checkStatus();
     if (status === "safe") {
-  myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
-}
-myField.print();
+       myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
+    }
+    myField.print();
 
-if (status === "out" || status === "hole" || status === "hat") {
-  alert(status === "hat" ? "YOU FOUND THE HAT!" : "Game Over!");
-  location.reload();
-}
+    if (status === "hat") {
+    document.getElementById("game-board").innerHTML = "<h2>You found the hat!</h2>";
+    } else if (status === "hole" || status === "out") {
+    document.getElementById("game-board").innerHTML = "<h2>Game Over!</h2>";
+    }
+
 });
-
