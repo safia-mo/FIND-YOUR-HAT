@@ -161,6 +161,7 @@ document.addEventListener("keydown", (e) => {
   updateLevelDisplay();
 
   setTimeout(() => {
+      document.getElementById("message-overlay").classList.add("hidden"); 
       myField = new Field(Field.generateField(currentLevel), currentLevel);
       myField.print();
       gameActive = true;
