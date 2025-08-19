@@ -24,8 +24,6 @@ html, body {
   position: relative;
   text-align: center;
   margin-top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
   color: #FACFCE;
   font-size: 2em;
   font-family: 'Jersey 25', sans-serif;
