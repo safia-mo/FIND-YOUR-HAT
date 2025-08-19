@@ -17,22 +17,24 @@ body {
 }
 
 #game-board {
-  position: absolute;
-  left: 14.44vw; /* X position from Figma */
-  width: 71.04vw;
-  height: 60.74vh;
+  width: 80vw;
+  max-width: 600px;
+  height: 60vw;
+  max-height: 450px;
   background-color: #23606e;
   border-radius: 15px;
   padding: 20px;
   box-sizing: border-box;
   color: #ffffff;
-  font-size: 30px; /* adjust for visibility */
+  font-size: 3vw;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   line-height: 1.5;
+  margin: 0 auto;
 }
+
 
 .game-title {
   font-family: 'Jersey 25', sans-serif;
