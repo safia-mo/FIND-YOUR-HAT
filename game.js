@@ -36,6 +36,8 @@ print() {
   let columns = this.field[0].length;
   let rows = this.field.length;
   let html = `<div class="field-grid" style="grid-template-columns: repeat(${columns}, 1fr); grid-template-rows: repeat(${rows}, 1fr); width: 100%; height: 100%;">`;
+  let fontSize = Math.floor(40 / columns) + "vw"; html += `<div class="field-cell" style="font-size:${fontSize}">${cell}</div>`;
+
   for (let row of this.field) {
     for (let cell of row) {
       html += `<div class="field-cell">${cell}</div>`;
