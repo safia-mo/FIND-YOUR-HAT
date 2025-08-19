@@ -12,7 +12,7 @@ document.getElementById("start-btn").onclick = function() {
 };
 
 
-document.getElementById("play-again").onclick = function() {
+document.getElementById("play-again-btn").onclick = function() {
   document.getElementById("message-overlay").classList.add("hidden");
   myField.print();
 }
@@ -106,11 +106,12 @@ static generateField() {
   }
 
 };
-  myField = new Field(Field.generateField());
-  myField.print();
+ 
 
 
 document.addEventListener("keydown", (e) => {
+    if (!myField) return;
+
     if (e.key === "ArrowUp") myField.move("up");
     if (e.key === "ArrowDown") myField.move("down");
     if (e.key === "ArrowLeft") myField.move("left");
@@ -122,10 +123,6 @@ document.addEventListener("keydown", (e) => {
        myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
     }
     myField.print();
-    function showMessage(message) {
-    document.getElementById("message-text").textContent = message;
-    document.getElementById("message-overlay").classList.remove("hidden");
-   }
 
    if (status === "hat") {
   showMessage("You found the hat!");
