@@ -174,16 +174,16 @@ else if (status === "hat") {
     myField.showMessage("Game Over!", true);
     gameActive = false;
 
-    setTimeout(() => {
-    currentLevel = 1;
-    updateLevelDisplay(); 
-    const overlay = document.getElementById("message-overlay");
-    overlay.classList.add("hidden"); 
+const playAgainBtn = document.getElementById("play-again-btn");
+    playAgainBtn.onclick = () => {
+        currentLevel = 1;
+        updateLevelDisplay();
 
-    myField = new Field(Field.generateField(currentLevel), currentLevel);
-    myField.print();
-    gameActive = true;
-  }, 1000); 
+        myField = new Field(Field.generateField(currentLevel), currentLevel);
+        myField.print();
+        gameActive = true;
+        const overlay = document.getElementById("message-overlay");
+        overlay.classList.add("hidden");
+    };
 }
-   
 });
