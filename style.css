@@ -1,19 +1,22 @@
 
-body {
+html, body {
   background-color: #023535;
   margin: 0;
+  padding: 0;
   height: 100vh;
   width: 100vw;
   position: relative; 
   font-family: 'Jersey 25', sans-serif; 
+  overflow: hidden;
 }
 
 #game-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
+  justify-content: center;
+  height: 100vh;
+  width:100vw;
 }
 
 #game-board {
