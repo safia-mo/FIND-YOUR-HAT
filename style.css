@@ -23,11 +23,12 @@ html, body {
 #level-display {
   position: relative;
   text-align: center;
-  margin-top: 10px;
+  margin: 10px auto 0 auto;
   color: #FACFCE;
   font-size: 2em;
   font-family: 'Jersey 25', sans-serif;
   z-index: 5;
+  display: block;
 }
 
 #rules-box{
