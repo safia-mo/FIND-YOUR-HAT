@@ -106,7 +106,8 @@ static generateField() {
   }
 
 };
-
+  myField = new Field(Field.generateField());
+  myField.print();
 
 
 document.addEventListener("keydown", (e) => {
