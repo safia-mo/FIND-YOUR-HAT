@@ -6,11 +6,15 @@ const pathCharacter = "*";
 let myField;
 let gameActive = false;
 let currentLevel = 1;
+function updateLevelDisplay() {
+    document.getElementById("level-display").textContent = `Level: ${currentLevel}`;
+}
 
 document.getElementById("start-btn").onclick = function() {
   document.getElementById("rules-box").classList.add("hidden");
   myField = new Field(Field.generateField(currentLevel), currentLevel);
   myField.print();
+  updateLevelDisplay();
  gameActive = true;
 };
 
@@ -129,7 +133,9 @@ static generateField(level = 1) {
   field[0][0] = pathCharacter;
   return field;
 
-}};
+}
+
+};
 
 document.addEventListener("keydown", (e) => {
     if (!myField || !gameActive) return;
@@ -143,27 +149,25 @@ document.addEventListener("keydown", (e) => {
     const status = myField.checkStatus();
     if (status === "safe") {
        myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
+       myField.print();
+
     }
-    myField.print();
 
-   if (status === "hat") {
-  myField.showMessage("You found the hat!");
-  gameActive = false;
-  currentLevel++;
-} else if (status === "hole" || status === "out") {
-  myField.showMessage("Game Over!");
-  gameActive = false;
-}
-
-});
-
-if (status === "hat") {
-  gameActive = false;
+  else if (status === "hat") {
+    myField.showMessage("You found the hat!");
+   gameActive = false;
   currentLevel++;
   updateLevelDisplay();
 
   setTimeout(() => {
-    myField = new Field(Field.generateField(currentLevel), currentLevel);
-    myField.print();
-    gameActive = true;
-  }, 1000); }
+      myField = new Field(Field.generateField(currentLevel), currentLevel);
+      myField.print();
+      gameActive = true;
+    }, 1000);
+   }
+   else if (status === "hole" || status === "out") {
+    // Player lost
+    myField.showMessage("Game Over!");
+    gameActive = false;
+   }
+});

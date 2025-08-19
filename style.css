@@ -9,6 +9,28 @@ html, body {
   font-family: 'Jersey 25', sans-serif; 
   overflow: hidden;
 }
+.game-title {
+  font-family: 'Jersey 25', sans-serif;
+  font-size: clamp(32px, 12.5vw, 180px);
+  color: #facfce;
+  position: static;
+  text-align: center;
+  top: auto; /* adjust as needed */
+  left: auto;
+  transform: none;
+  margin: 0;
+}
+#level-display {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #FACFCE;
+  font-size: 2em;
+  font-family: 'Jersey 25', sans-serif;
+  z-index: 5;
+}
+
 #rules-box{
   position: fixed;
   top: 50%;
@@ -109,17 +131,4 @@ html, body {
   font-size: 2em; 
   border: 1px solid transparent; 
 }
-
-.game-title {
-  font-family: 'Jersey 25', sans-serif;
-  font-size: clamp(32px, 12.5vw, 180px);
-  color: #facfce;
-  position: static;
-  text-align: center;
-  top: auto; /* adjust as needed */
-  left: auto;
-  transform: none;
-  margin: 0;
-}
-
 
