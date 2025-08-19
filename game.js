@@ -31,10 +31,11 @@ class Field {
     this.level = level;
   }
   
-
 print() {
   const board = document.getElementById("game-board");
-  let html = '<div class="field-grid">';
+  let columns = this.field[0].length;
+  let rows = this.field.length;
+  let html = `<div class="field-grid" style="grid-template-columns: repeat(${columns}, 1fr); grid-template-rows: repeat(${rows}, 1fr); width: 100%; height: 100%;">`;
   for (let row of this.field) {
     for (let cell of row) {
       html += `<div class="field-cell">${cell}</div>`;
@@ -43,6 +44,8 @@ print() {
   html += '</div>';
   board.innerHTML = html;
 }
+
+
 
 showMessage(message) {
     document.getElementById("message-text").textContent = message;
