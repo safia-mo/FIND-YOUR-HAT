@@ -85,7 +85,7 @@ background-color: #026773;
 
 #rules-box,
 #message-overlay {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -105,11 +105,12 @@ background-color: #026773;
   background: #23606e;
   color: #FACFCE;
   box-shadow: 6px 6px 0 #023535;
+  border: 4px solid #FACFCE;
 
 }
 
 .message-box {
-  width: 100%;
+  width: 80%;
   box-sizing: border-box;
   background: #23606e;
   color: #FACFCE;
