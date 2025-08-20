@@ -10,8 +10,11 @@ let currentLevel = 1;
 function updateLevelDisplay() {
   document.getElementById("level-display").textContent = `Level: ${currentLevel}`;
 }
-
 const startBtn = document.getElementById("start-btn");
+const playAgainBtn = document.getElementById("play-again-btn");
+const rulesBox = document.getElementById("rules-box");
+rulesBox.classList.add("show");
+
 startBtn.onclick = () => {
   document.getElementById("rules-box").classList.add("hidden");
   currentLevel = 1;
@@ -22,7 +25,6 @@ startBtn.onclick = () => {
   document.getElementById("message-overlay").classList.add("hidden");
 };
 
-const playAgainBtn = document.getElementById("play-again-btn");
 playAgainBtn.onclick = () => {
   myField = new Field(Field.generateField(currentLevel), currentLevel);
   myField.print();
@@ -187,16 +189,5 @@ else if (status === "hat") {
     myField.showMessage("Game Over!", true);
     gameActive = false;
 
-const playAgainBtn = document.getElementById("play-again-btn");
-    playAgainBtn.onclick = () => {
-        currentLevel = 1;
-        updateLevelDisplay();
-
-        myField = new Field(Field.generateField(currentLevel), currentLevel);
-        myField.print();
-        gameActive = true;
-        const overlay = document.getElementById("message-overlay");
-        overlay.classList.add("hidden");
-    };
 }
 });
