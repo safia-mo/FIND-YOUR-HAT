@@ -159,23 +159,22 @@ document.addEventListener("keydown", (e) => {
 
     const gameStatus = myField.checkStatus();
 
-    if (gameStatus === "safe") {
-        myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
-        myField.print();
-    } else if (gameStatus === "hat") {
+    if (gameStatus === "hat") {
         gameActive = false;
         myField.showMessage("You found the hat!", false);
         currentLevel++;
         updateLevelDisplay();
-
         setTimeout(() => {
             document.getElementById("message-overlay").classList.add("hidden");
             myField = new Field(Field.generateField(currentLevel), currentLevel);
             myField.print();
             gameActive = true;
         }, 700);
-    } else { 
+    } else if (gameStatus === "hole" || gameStatus === "out") {
         gameActive = false;
         myField.showMessage("Game Over!", true);
+    } else if (gameStatus === "safe") {
+        myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
+        myField.print();
     }
 });
