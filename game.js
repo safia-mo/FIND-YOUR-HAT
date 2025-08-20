@@ -168,20 +168,21 @@ while (currentRow !== hatRow || currentCol !== hatCol) {
       currentRow = nextRow;
       currentCol = nextCol;
   }
-  field[startRow][startCol] = pathCharacter;
-
-  field[hatRow][hatCol] = hat;
+  
 let numHoles = Math.floor(rows * columns * 0.2);
   while (numHoles > 0) {
       let r = Math.floor(Math.random() * rows);
       let c = Math.floor(Math.random() * columns);
-      if (field[r][c] === fieldCharacter) {
-          field[r][c] = hole;
-          numHoles--;
-      }
+       if (!path.some(([pr, pc]) => pr === r && pc === c) && field[r][c] === fieldCharacter) {
+       field[r][c] = hole;
+       numHoles--;
+  }
+
   }
 
   field[startRow][startCol] = pathCharacter;
+  field[hatRow][hatCol] = hat;
+
   return field;
   }
 }
