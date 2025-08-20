@@ -146,28 +146,25 @@ static generateField(level = 1) {
 document.addEventListener("keydown", (e) => {
     if (!myField || !gameActive) return;
 
-    let moved = false;
-    if (e.key === "ArrowUp") { myField.move("up"); moved = true; }
-    if (e.key === "ArrowDown") { myField.move("down"); moved = true; }
-    if (e.key === "ArrowLeft") { myField.move("left"); moved = true; }
-    if (e.key === "ArrowRight") { myField.move("right"); moved = true; }
-    if (!moved) return;
+    let direction;
+    if (e.key === "ArrowUp") direction = "up";
+    if (e.key === "ArrowDown") direction = "down";
+    if (e.key === "ArrowLeft") direction = "left";
+    if (e.key === "ArrowRight") direction = "right";
+    if (!direction) return;
+
+    e.preventDefault(); 
+
+    myField.move(direction);
 
     const gameStatus = myField.checkStatus();
 
     if (gameStatus === "safe") {
-        if (
-            myField.playerRow >= 0 &&
-            myField.playerRow < myField.field.length &&
-            myField.playerCol >= 0 &&
-            myField.playerCol < myField.field[0].length
-        ) {
-            myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
-        }
+        myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
         myField.print();
     } else if (gameStatus === "hat") {
         gameActive = false;
-        myField.showMessage("You found the hat!", false); 
+        myField.showMessage("You found the hat!", false);
         currentLevel++;
         updateLevelDisplay();
 
@@ -177,7 +174,7 @@ document.addEventListener("keydown", (e) => {
             myField.print();
             gameActive = true;
         }, 700);
-    } else if (gameStatus === "hole" || gameStatus === "out") {
+    } else { 
         gameActive = false;
         myField.showMessage("Game Over!", true);
     }
