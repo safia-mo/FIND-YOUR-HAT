@@ -1,7 +1,3 @@
-
-    console.log(document.getElementById("rules-box")); // Should NOT be null
-console.log(document.getElementById("message-text")); // Should NOT be null
-
 const hat = "^";
 const hole = "O";
 const fieldCharacter = "░";
@@ -136,9 +132,9 @@ static isPathAvailable(field, startRow, startCol, hatRow, hatCol) {
   return false;
 }
 static generateField(level = 1) {
-  let size = 2 + level;
-  let rows = size;
-  let columns = size;
+let rows = 2 + level;
+let columns = 2 + level;
+
   let field = [];
   for (let i = 0; i < rows; i++) {
     let row = [];
@@ -147,46 +143,47 @@ static generateField(level = 1) {
     }
     field.push(row);
   }
-  let hatRow, hatCol;
-  let hatPlaced = false;
-  while (!hatPlaced) {
-    let randomRow = Math.floor(Math.random() * rows);
-    let randomCol = Math.floor(Math.random() * columns);
-    if (
-      (randomRow > 1 || randomCol > 1) && // not in 2x2 safe zone
-      field[randomRow][randomCol] !== hole
-    ) {
-      field[randomRow][randomCol] = hat;
-      hatRow = randomRow;
-      hatCol = randomCol;
-      hatPlaced = true;
-    }
-  }
-  function isNearHat(r, c, hatRow, hatCol) {
-    return Math.abs(r - hatRow) <= 1 && Math.abs(c - hatCol) <= 1;
+ 
+ let startRow = 0, startCol = 0;
+ let hatRow = rows - 1, hatCol = columns - 1;
+
+let path = [[startRow, startCol]];
+let currentRow = startRow;
+let currentCol = startCol;
+
+while (currentRow !== hatRow || currentCol !== hatCol) {
+      let moves = [];
+      if (currentRow < hatRow) moves.push([currentRow + 1, currentCol]);
+      if (currentCol < hatCol) moves.push([currentRow, currentCol + 1]);
+      if (currentRow > hatRow) moves.push([currentRow - 1, currentCol]);
+      if (currentCol > hatCol) moves.push([currentRow, currentCol - 1]);
+
+      let [nextRow, nextCol] = moves[Math.floor(Math.random() * moves.length)];
+      path.push([nextRow, nextCol]);
+      currentRow = nextRow;
+      currentCol = nextCol;
   }
 
-  let numHoles = Math.floor((rows * columns * 0.2));
-  while (numHoles > 0) {
-    let randomRow = Math.floor(Math.random() * rows);
-    let randomCol = Math.floor(Math.random() * columns);
-    if (
-      (randomRow > 1 || randomCol > 1) && // not in 2x2 safe zone
-      field[randomRow][randomCol] !== hole &&
-      field[randomRow][randomCol] !== hat &&
-      !isNearHat(randomRow, randomCol, hatRow, hatCol)
-    ) {
-      field[randomRow][randomCol] = hole;
-      numHoles--;
-    }
+  for (let [r, c] of path) {
+      field[r][c] = pathCharacter;
   }
+
+  field[hatRow][hatCol] = hat;
+let numHoles = Math.floor(rows * columns * 0.2);
+  while (numHoles > 0) {
+      let r = Math.floor(Math.random() * rows);
+      let c = Math.floor(Math.random() * columns);
+      if (field[r][c] === fieldCharacter) {
+          field[r][c] = hole;
+          numHoles--;
+      }
+  }
+
+  field[startRow][startCol] = pathCharacter;
 
   field[0][0] = pathCharacter;
-  return field;
-
+  }
 }
-
-};
 
 document.addEventListener("keydown", (e) => {
     if (!myField || !gameActive) return;

@@ -167,6 +167,7 @@ background-color: #026773;
 #start-btn:hover,
 #play-again-btn:hover {
   background: #ffebe9; 
+  border: 3px solid #ffebe9;
   transform: translate(-2px, -2px);
   box-shadow: 2px 2px 0 #023535;
 }
