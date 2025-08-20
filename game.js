@@ -161,15 +161,10 @@ document.addEventListener("keydown", (e) => {
 
     if (gameStatus === "hat") {
         gameActive = false;
-        myField.showMessage("You found the hat!", false);
+        myField.showMessage("You found the hat! Next level...", true); // show button
         currentLevel++;
         updateLevelDisplay();
-        setTimeout(() => {
-            document.getElementById("message-overlay").classList.add("hidden");
-            myField = new Field(Field.generateField(currentLevel), currentLevel);
-            myField.print();
-            gameActive = true;
-        }, 700);
+        // Do NOT auto-hide or auto-reset here!
     } else if (gameStatus === "hole" || gameStatus === "out") {
         gameActive = false;
         myField.showMessage("Game Over!", true);
