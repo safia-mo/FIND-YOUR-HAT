@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function() {
 const hat = "^";
 const hole = "O";
 const fieldCharacter = "░";
@@ -179,4 +180,5 @@ document.addEventListener("keydown", (e) => {
     myField.print();
 }
 
+});
 });
