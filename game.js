@@ -157,10 +157,17 @@ document.addEventListener("keydown", (e) => {
     const gameStatus = myField.checkStatus();
     
     if (gameStatus === "safe") {
-       myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
-       myField.print();
+       if (
+         myField.playerRow >= 0 &&
+        myField.playerRow < myField.field.length &&
+        myField.playerCol >= 0 &&
+        myField.playerCol < myField.field[0].length
+    ) {
+     myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
+     }
+     myField.print();
 
-    } else if (gameStatus === "hat") {
+    }else if (gameStatus === "hat") {
         myField.showMessage("You found the hat!", false); 
         gameActive = false;
         currentLevel++;
