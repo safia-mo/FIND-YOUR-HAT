@@ -147,6 +147,7 @@ document.addEventListener("keydown", (e) => {
     if (!myField || !gameActive) return;
 
     let moved = false;
+
     if (e.key === "ArrowUp") { myField.move("up"); moved = true; }
     if (e.key === "ArrowDown") { myField.move("down"); moved = true; }
     if (e.key === "ArrowLeft") { myField.move("left"); moved = true; }
@@ -155,19 +156,11 @@ document.addEventListener("keydown", (e) => {
     if (!moved) return;
 
     const gameStatus = myField.checkStatus();
-    
-    if (gameStatus === "safe") {
-       if (
-         myField.playerRow >= 0 &&
-        myField.playerRow < myField.field.length &&
-        myField.playerCol >= 0 &&
-        myField.playerCol < myField.field[0].length
-    ) {
-     myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
-     }
-     myField.print();
 
-    }else if (gameStatus === "hat") {
+    if (gameStatus === "safe") {
+        myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
+        myField.print();
+    } else if (gameStatus === "hat") {
         myField.showMessage("You found the hat!", false); 
         gameActive = false;
         currentLevel++;
@@ -182,7 +175,6 @@ document.addEventListener("keydown", (e) => {
             myField.print();
             gameActive = true;
         }, 750);
-
     } else if (gameStatus === "hole" || gameStatus === "out") {
         myField.showMessage("Game Over!", true);
         gameActive = false;
