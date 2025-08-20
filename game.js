@@ -210,15 +210,18 @@ document.addEventListener("keydown", (e) => {
     gameActive = false;
     currentLevel++;
     updateLevelDisplay();
-    function playWinSound() {
+    
     document.querySelectorAll("#move-sound").forEach(s => {
         s.pause();
         s.currentTime = 0;
     });
-  }
+    
     let winSound = document.getElementById("win-sound").cloneNode();
     winSound.play();
+
     myField.showMessage("You found the hat! Next level...", false, true); 
+
+  
 } else if (gameStatus === "hole" || gameStatus === "out") {
     gameActive = false;
     document.getElementById("lose-sound").play();
