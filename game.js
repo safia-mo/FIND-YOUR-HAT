@@ -3,6 +3,9 @@ const hole = "O";
 const fieldCharacter = "░";
 const pathCharacter = "*";
 
+document.getElementById("message-overlay").tabIndex = -1;
+document.getElementById("rules-box").tabIndex = -1;
+
 let myField;
 let gameActive = false;
 let currentLevel = 1;

@@ -100,6 +100,11 @@ background-color: #026773;
   align-items: center;
   justify-content: center;
   overflow: auto;
+  pointer-events: none;
+}
+#message-overlay.show,
+#rules-box.show {
+    pointer-events: auto; 
 }
 
 .message-box {
