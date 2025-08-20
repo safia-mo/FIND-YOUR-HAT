@@ -12,8 +12,11 @@ function updateLevelDisplay() {
 }
 const startBtn = document.getElementById("start-btn");
 const playAgainBtn = document.getElementById("play-again-btn");
-const rulesBox = document.getElementById("rules-box");
-rulesBox.classList.add("show");
+
+startBtn.addEventListener("click", () => {
+    rulesBox.classList.remove("show"); // hides the rules
+    startGame(); // start your game
+});
 
 startBtn.onclick = () => {
   document.getElementById("rules-box").classList.add("hidden");

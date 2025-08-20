@@ -107,6 +107,11 @@ background-color: #026773;
     pointer-events: auto; 
 }
 
+#rules-box.show {
+    display: flex;
+    pointer-events: auto;
+}
+
 .message-box {
   width: 80%;
   box-sizing: border-box;
