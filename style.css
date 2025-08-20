@@ -93,11 +93,12 @@ background-color: #026773;
 /* RULES BOX & MESSAGE BOX */
 #rules-box,
 .message-box {
-  width: calc(var(--board-size) * 0.8); /* 80% of board size */
+  width: calc(80%, var(--board-size)); /* 80% of board size */
   max-width: 55vw;
   max-height: 55vh;
-  padding: clamp(10px, 5vw, 40px); /* scales with screen size */
+  padding: clamp(10px, 2vw, 20px); /* scales with screen size */
   font-size: clamp(0.9rem, 2vw, 1.3rem);
+  overflow: auto;
   box-sizing: border-box;
   background: #23606e;
   color: #FACFCE;
