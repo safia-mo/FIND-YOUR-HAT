@@ -63,6 +63,26 @@ background-color: #026773;
 }
 
 /* GAME BOARD */
+#game-board {
+  width: var(--board-size);
+  aspect-ratio: 1 / 1;
+  min-width: 250px;
+  min-height: 250px;
+  max-width: 550px;
+  max-height: 550px;
+  background-color: #23606e;
+  color: #FACFCE;
+  box-sizing: border-box;
+  border: 4px solid #FACFCE;
+  box-shadow: 6px 6px 0 #023535;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(0.8rem, 2vw, 2rem);
+  overflow: hidden;
+}
+
 #rules-box,
 #message-overlay {
   position: fixed;
