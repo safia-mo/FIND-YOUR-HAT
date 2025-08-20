@@ -75,7 +75,16 @@ showMessage(message, showButton = true, isWin = false) {
         myField.print();
         gameActive = true;
     };
+    if (isWin) {
+        setTimeout(() => {
+            document.getElementById("message-overlay").classList.add("hidden");
+            myField = new Field(Field.generateField(currentLevel), currentLevel);
+            myField.print();
+            gameActive = true;
+        }, 1500);
+    }
 }
+
 
 move(direction) {
   if (direction === "up") this.playerRow--;
@@ -174,7 +183,7 @@ document.addEventListener("keydown", (e) => {
     gameActive = false;
     currentLevel++;
     updateLevelDisplay();
-    myField.showMessage("You found the hat! Next level...", true, true); 
+    myField.showMessage("You found the hat! Next level...", false, true); 
 } else if (gameStatus === "hole" || gameStatus === "out") {
     gameActive = false;
     myField.showMessage("Game Over!", true, false); 
