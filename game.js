@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
+    console.log(document.getElementById("rules-box")); // Should NOT be null
+console.log(document.getElementById("message-text")); // Should NOT be null
+
 const hat = "^";
 const hole = "O";
 const fieldCharacter = "░";
