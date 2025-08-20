@@ -15,7 +15,7 @@ html, body {
 }
 .game-title {
   font-family: 'Jersey 25', sans-serif;
-  font-size: clamp(24px, 8vw, 100px);
+  font-size: clamp(24px, 8vw, 150px);
   margin: 10px 0;
   color: #facfce;
   position: static;
@@ -73,8 +73,8 @@ background-color: #026773;
   aspect-ratio: 1 / 1;
   min-width: 250px;
   min-height: 250px;
-  max-width: 550px;
-  max-height: 550px;
+  max-width: 700px;
+  max-height: 700px;
   background-color: #23606e;
   color: #FACFCE;
   box-sizing: border-box;
