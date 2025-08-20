@@ -147,36 +147,38 @@ document.addEventListener("keydown", (e) => {
     if (!myField || !gameActive) return;
 
     let moved = false;
-
     if (e.key === "ArrowUp") { myField.move("up"); moved = true; }
     if (e.key === "ArrowDown") { myField.move("down"); moved = true; }
     if (e.key === "ArrowLeft") { myField.move("left"); moved = true; }
     if (e.key === "ArrowRight") { myField.move("right"); moved = true; }
-
     if (!moved) return;
 
     const gameStatus = myField.checkStatus();
 
     if (gameStatus === "safe") {
-        myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
+        if (
+            myField.playerRow >= 0 &&
+            myField.playerRow < myField.field.length &&
+            myField.playerCol >= 0 &&
+            myField.playerCol < myField.field[0].length
+        ) {
+            myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
+        }
         myField.print();
     } else if (gameStatus === "hat") {
-        myField.showMessage("You found the hat!", false); 
         gameActive = false;
+        myField.showMessage("You found the hat!", false); 
         currentLevel++;
         updateLevelDisplay();
 
         setTimeout(() => {
-            document.getElementById("message-overlay").classList.add("hidden"); 
-        }, 700);
-
-        setTimeout(() => {
+            document.getElementById("message-overlay").classList.add("hidden");
             myField = new Field(Field.generateField(currentLevel), currentLevel);
             myField.print();
             gameActive = true;
-        }, 750);
+        }, 700);
     } else if (gameStatus === "hole" || gameStatus === "out") {
-        myField.showMessage("Game Over!", true);
         gameActive = false;
+        myField.showMessage("Game Over!", true);
     }
 });
