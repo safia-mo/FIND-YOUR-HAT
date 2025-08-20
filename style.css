@@ -62,15 +62,6 @@ background-color: #026773;
   border: 1px solid transparent; 
 }
 
-#message-overlay {
-  position: fixed;
-  top: 50%; 
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
-#message-overlay.hidden { display: none; }
-
 /* GAME BOARD */
 #game-board {
   width: var(--board-size);
@@ -92,10 +83,10 @@ background-color: #026773;
 
 /* RULES BOX & MESSAGE BOX */
 #rules-box,
-.message-box {
-  width: calc(80%, var(--board-size)); /* 80% of board size */
-  max-width: 55vw;
-  max-height: 55vh;
+#message-overlay {
+  width: min(90vw, var(--board-size), 600px);; /* 80% of board size */
+  max-width: 90vw;
+  max-height: 80vh;
   padding: clamp(10px, 2vw, 20px); /* scales with screen size */
   font-size: clamp(0.9rem, 2vw, 1.3rem);
   overflow: auto;
@@ -111,18 +102,36 @@ background-color: #026773;
   transform: translate(-50%, -50%);
   z-index: 10;
   display: flex;
-  flex-direction: row;
-  text-align: center;
   align-items: center;
   justify-content: center;
-  white-space: normal;
+
 }
+
+.message-box {
+  width: 100%;
+  box-sizing: border-box;
+  background: #23606e;
+  color: #FACFCE;
+  padding: clamp(10px, 2vw, 20px);
+  font-size: clamp(0.9rem, 2vw, 1.3rem);
+  border: 4px solid #FACFCE;
+  box-shadow: 6px 6px 0 #023535;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 
 /* HIDE WHEN NEEDED */
 #rules-box.hidden,
+#message-overlay.hidden,
 #message-overlay.hidden {
   display: none;
 }
+
+
 
 /* BUTTONS */
 #start-btn,
