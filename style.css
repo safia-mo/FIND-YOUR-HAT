@@ -30,7 +30,7 @@ html, body {
   text-align: center;
   margin: 10px auto 0 auto;
   color: #FACFCE;
-  font-size: 2em;
+  font-size: clamp(1.2em, 5vw, 2em);  
   font-family: 'Jersey 25', sans-serif;
   z-index: 5;
   display: block;
