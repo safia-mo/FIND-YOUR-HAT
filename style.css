@@ -81,6 +81,7 @@ background-color: #026773;
   align-items: center;
   font-size: clamp(0.8rem, 2vw, 2rem);
   overflow: hidden;
+  position: relative;
 }
 
 #rules-box,
@@ -150,6 +151,20 @@ background-color: #026773;
   max-width: 90vw;
   font-family: 'Jersey 25', sans-serif;
   position: relative;
+}
+
+#start-btn:hover,
+#play-again-btn:hover {
+  background: #ffebe9; 
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px 0 #023535;
+}
+
+#start-btn:active,
+#play-again-btn:active {
+  background: #e5bdbb;
+  transform: translate(2px, 2px);
+  box-shadow: none;
 }
 
 #play-again-btn:active {
