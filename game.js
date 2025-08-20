@@ -39,7 +39,7 @@ class Field {
 
   const cellWidth = grid.clientWidth / columns;
   const cellHeight = grid.clientHeight / rows;
-  const fontSize = Math.min(cellWidth, cellHeight) * 0.8;
+  const fontSize = Math.min(cellWidth, cellHeight) * 0.6;
   let html = `<div class="field-grid" style="display: grid; width:100%; height:100%; grid-template-columns: repeat(${columns}, 1fr); grid-template-rows: repeat(${rows}, 1fr);">`;
 
   for (let r = 0; r < rows; r++) {
@@ -168,10 +168,7 @@ while (currentRow !== hatRow || currentCol !== hatCol) {
       currentRow = nextRow;
       currentCol = nextCol;
   }
-
-  for (let [r, c] of path) {
-      field[r][c] = pathCharacter;
-  }
+  field[startRow][startCol] = pathCharacter;
 
   field[hatRow][hatCol] = hat;
 let numHoles = Math.floor(rows * columns * 0.2);
