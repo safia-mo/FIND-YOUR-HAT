@@ -11,23 +11,23 @@
 
 <body>
   <div id="game-container">
-  <h1 class="game-title">Find Your Hat</h1>
-  <div id="level-display">Level: 1</div>
-  <div id="game-board">
-    <div id="rules-box">
-      <h2>How to Play</h2>
-      <p>Use arrow keys to move. Find your hat (^), avoid holes (O), and don’t go off the field!</p>
-      <button id="start-btn">Start Game</button>
-    </div>
-    <div id="message-overlay" class="hidden">
-      <div class="message-box">
-        <h2 id="message-text"></h2>
-        <button id="play-again-btn">Play Again</button>
-      </div>
+    <h1 class="game-title">Find Your Hat</h1>
+    <div id="level-display">Level: 1</div>
+    <div id="game-board" style="position: relative;"></div>
+  </div>
+
+  <div id="rules-box">
+    <h2>How to Play</h2>
+    <p>Use arrow keys to move. Find your hat (^), avoid holes (O), and don’t go off the field!</p>
+    <button id="start-btn">Start Game</button>
+  </div>
+
+  <div id="message-overlay" class="hidden">
+    <div class="message-box">
+      <h2 id="message-text"></h2>
+      <button id="play-again-btn">Play Again</button>
     </div>
   </div>
-</div>
-
   <script src="game.js"></script>
 
   <div id="copyright">
