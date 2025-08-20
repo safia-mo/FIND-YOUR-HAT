@@ -10,13 +10,9 @@ let currentLevel = 1;
 function updateLevelDisplay() {
   document.getElementById("level-display").textContent = `Level: ${currentLevel}`;
 }
+
 const startBtn = document.getElementById("start-btn");
 const playAgainBtn = document.getElementById("play-again-btn");
-
-startBtn.addEventListener("click", () => {
-    rulesBox.classList.remove("show"); // hides the rules
-    startGame(); // start your game
-});
 
 startBtn.onclick = () => {
   document.getElementById("rules-box").classList.add("hidden");
@@ -34,16 +30,6 @@ playAgainBtn.onclick = () => {
   gameActive = true;
   document.getElementById("message-overlay").classList.add("hidden");
 };
-
-
-
-document.getElementById("play-again-btn").onclick = function() {
-  document.getElementById("message-overlay").classList.add("hidden");
-  myField = new Field(Field.generateField(currentLevel), currentLevel);
-  myField.print();
-  gameActive = true;
-
-}
 
 class Field {
   constructor(field, level = 1) {
