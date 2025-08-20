@@ -2,6 +2,7 @@ const hat = "^";
 const hole = "O";
 const fieldCharacter = "░";
 const pathCharacter = "*";
+const playerIcon = "👾";
 
 let myField;
 let gameActive = false;
@@ -43,15 +44,19 @@ print() {
 
   let html = `<div class="field-grid" style="display: grid; width:100%; height:100%; grid-template-columns: repeat(${columns}, 1fr); grid-template-rows: repeat(${rows}, 1fr);">`;
 
-  for (let row of this.field) {
-    for (let cell of row) {
-      html += `<div class="field-cell" style="font-size:${fontSize}px; box-sizing:border-box;">${cell}</div>`;
-    }
-  }
+   for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < columns; c++) {
+      let cell = this.field[r][c];
+      if (r === this.playerRow && c === this.playerCol) {
+        cell = playerIcon; 
+      }
+      
 
   html += '</div>';
   grid.innerHTML = html;
 }
+   }
+  }
 
 showMessage(message, showButton = true, isWin = false) {
     document.getElementById("message-text").textContent = message;
@@ -105,6 +110,7 @@ checkStatus() {
   } else {
     return "safe";
   }};
+
 static isPathAvailable(field, startRow, startCol, hatRow, hatCol) {
   let visited = Array.from({ length: field.length }, () => Array(field[0].length).fill(false));
   let queue = [[startRow, startCol]];
@@ -180,8 +186,7 @@ let numHoles = Math.floor(rows * columns * 0.2);
   }
 
   field[startRow][startCol] = pathCharacter;
-
-  field[0][0] = pathCharacter;
+  return field;
   }
 }
 
@@ -213,5 +218,6 @@ document.addEventListener("keydown", (e) => {
     myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
     myField.print();
 }
+
 
 });
