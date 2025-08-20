@@ -81,7 +81,7 @@ showMessage(message, showButton = true, isWin = false) {
             myField = new Field(Field.generateField(currentLevel), currentLevel);
             myField.print();
             gameActive = true;
-        }, 750);
+        }, 450);
     }
 }
 
