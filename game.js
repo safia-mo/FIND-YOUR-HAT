@@ -71,7 +71,17 @@ move(direction) {
   if (direction === "down") this.playerRow++;
   if (direction === "left") this.playerCol--;
   if (direction === "right") this.playerCol++;
-}
+
+  if (
+      this.playerRow >= 0 &&
+      this.playerRow < this.field.length &&
+      this.playerCol >= 0 &&
+      this.playerCol < this.field[0].length
+    ) {
+      this.field[this.playerRow][this.playerCol] = pathCharacter;
+    }
+  }
+
 
 checkStatus() {
     if (
@@ -145,38 +155,39 @@ static generateField(level = 1) {
 document.addEventListener("keydown", (e) => {
     if (!myField || !gameActive) return;
 
+    let moved = false;
     if (e.key === "ArrowUp") myField.move("up");
     if (e.key === "ArrowDown") myField.move("down");
     if (e.key === "ArrowLeft") myField.move("left");
     if (e.key === "ArrowRight") myField.move("right");
 
+    if (!moved) return;
 
-    const status = myField.checkStatus();
-    if (status === "safe") {
-       myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
+    const gameStatus = myField.checkStatus();
+    
+    if (gameStatus === "safe") {
        myField.print();
 
-    }
+    } else if (gameStatus === "hat") {
+    myField.showMessage("You found the hat!", false); 
+    gameActive = false;
+    currentLevel++;
+    updateLevelDisplay();
 
-else if (status === "hat") {
-  myField.showMessage("You found the hat!", false); 
-  gameActive = false;
-  currentLevel++;
-  updateLevelDisplay();
-
-  setTimeout(() => {
+    setTimeout(() => {
     const overlay = document.getElementById("message-overlay");
     overlay.classList.add("hidden"); 
-  }, 700);
+    }, 700);
 
-  setTimeout(() => {
+    setTimeout(() => {
     myField = new Field(Field.generateField(currentLevel), currentLevel);
     myField.print();
     gameActive = true;
-  }, 750);
-}else if (status === "hole" || status === "out") {
+    }, 750);
+
+    }else if (gameStatus === "hole" || status === "out") {
     myField.showMessage("Game Over!", true);
     gameActive = false;
 
-}
+   }
 });
