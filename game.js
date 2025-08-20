@@ -200,7 +200,8 @@ document.addEventListener("keydown", (e) => {
 
     myField.move(direction);
 
-    document.getElementById("move-sound").play();
+   const moveSound = document.getElementById("move-sound").cloneNode();
+   moveSound.play;
 
     const gameStatus = myField.checkStatus();
 
