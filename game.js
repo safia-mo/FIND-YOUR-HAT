@@ -41,8 +41,8 @@ print() {
   let columns = this.field[0].length;
   let rows = this.field.length;
 
-  const cellWidth = board.clientWidth / columns;
-  const cellHeight = board.clientHeight / rows;
+  const cellWidth = grid.clientWidth / columns;
+  const cellHeight = grid.clientHeight / rows;
   const fontSize = Math.min(cellWidth, cellHeight) * 0.6; // 60% of cell
 
   let html = `<div class="field-grid" style="display: grid; width:100%; height:100%; grid-template-columns: repeat(${columns}, 1fr); grid-template-rows: repeat(${rows}, 1fr);">`;
