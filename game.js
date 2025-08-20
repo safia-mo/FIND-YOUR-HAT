@@ -24,13 +24,6 @@ startBtn.onclick = () => {
   document.getElementById("message-overlay").classList.add("hidden");
 };
 
-playAgainBtn.onclick = () => {
-  myField = new Field(Field.generateField(currentLevel), currentLevel);
-  myField.print();
-  gameActive = true;
-  document.getElementById("message-overlay").classList.add("hidden");
-};
-
 class Field {
   constructor(field, level = 1) {
     this.field = field;
