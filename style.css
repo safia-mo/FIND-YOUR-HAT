@@ -136,6 +136,7 @@ background-color: #026773;
 #message-overlay.hidden,
 #message-overlay.hidden {
   display: none;
+  pointer-events: none;
 }
 
 

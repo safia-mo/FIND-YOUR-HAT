@@ -13,12 +13,14 @@ function updateLevelDisplay() {
     document.getElementById("level-display").textContent = `Level: ${currentLevel}`;
 }
 
-document.getElementById("start-btn").onclick = function() {
-  document.getElementById("rules-box").classList.add("hidden");
+const startBtn = document.getElementById("start-btn");
+startBtn.onclick = () => {
   myField = new Field(Field.generateField(currentLevel), currentLevel);
   myField.print();
-  updateLevelDisplay();
- gameActive = true;
+  gameActive = true;
+
+  const overlay = document.getElementById("message-overlay");
+  overlay.classList.add("hidden");
 };
 
 
