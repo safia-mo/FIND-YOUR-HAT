@@ -37,7 +37,7 @@ class Field {
   }
   
 print() {
-  const board = document.getElementById("game-board");
+  const grid = document.getElementById("field-grid");
   let columns = this.field[0].length;
   let rows = this.field.length;
 
@@ -54,7 +54,7 @@ print() {
   }
 
   html += '</div>';
-  board.innerHTML = html;
+  grid.innerHTML = html;
 }
 
 showMessage(message, showButton = true, isWin = false) {
