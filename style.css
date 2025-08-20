@@ -94,8 +94,8 @@ background-color: #026773;
 #rules-box,
 .message-box {
   width: calc(var(--board-size) * 0.8); /* 80% of board size */
-  max-width: 70vw;
-  max-height: 70vh;
+  max-width: 55vw;
+  max-height: 55vh;
   padding: clamp(10px, 5vw, 40px); /* scales with screen size */
   font-size: clamp(0.9rem, 2vw, 1.3rem);
   box-sizing: border-box;
