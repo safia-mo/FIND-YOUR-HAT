@@ -71,15 +71,6 @@ move(direction) {
   if (direction === "down") this.playerRow++;
   if (direction === "left") this.playerCol--;
   if (direction === "right") this.playerCol++;
-
-  if (
-      this.playerRow >= 0 &&
-      this.playerRow < this.field.length &&
-      this.playerCol >= 0 &&
-      this.playerCol < this.field[0].length
-    ) {
-      this.field[this.playerRow][this.playerCol] = pathCharacter;
-    }
   }
 
 
