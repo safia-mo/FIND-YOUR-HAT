@@ -1,5 +1,5 @@
 :root { 
-    --board-size : min (55vw, 55vh); 
+    --board-size : min(55vw, 55vh); 
 }
 
 
@@ -73,7 +73,6 @@ background-color: #026773;
 
 /* GAME BOARD */
 #game-board {
-  --board-size: min(60vw, 60vh); /* main reference size */
   width: var(--board-size);
   aspect-ratio: 1 / 1;
   max-width: 550px;
@@ -95,8 +94,8 @@ background-color: #026773;
 #rules-box,
 .message-box {
   width: calc(var(--board-size) * 0.8); /* 80% of board size */
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 70vw;
+  max-height: 70vh;
   padding: clamp(10px, 5vw, 40px); /* scales with screen size */
   font-size: clamp(0.9rem, 2vw, 1.3rem);
   box-sizing: border-box;
@@ -110,8 +109,11 @@ background-color: #026773;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  display: block;
+  display: flex;
+  flex-direction: row;
   text-align: center;
+  align-items: center;
+  justify-content: center;
   white-space: normal;
 }
 
