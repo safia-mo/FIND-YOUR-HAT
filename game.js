@@ -60,10 +60,24 @@ print() {
   board.innerHTML = html;
 }
 
-showMessage(message, showButton = true) {
+showMessage(message, showButton = true, isWin = false) {
     document.getElementById("message-text").textContent = message;
     document.getElementById("message-overlay").classList.remove("hidden");
-    document.getElementById("play-again-btn").style.display = showButton ? "block" : "none";
+    const btn = document.getElementById("play-again-btn");
+    btn.style.display = showButton ? "block" : "none";
+    btn.textContent = isWin ? "Next Level" : "Play Again";
+    btn.onclick = () => {
+        document.getElementById("message-overlay").classList.add("hidden");
+        if (isWin) {
+            myField = new Field(Field.generateField(currentLevel), currentLevel);
+        } else {
+            currentLevel = 1;
+            updateLevelDisplay();
+            myField = new Field(Field.generateField(currentLevel), currentLevel);
+        }
+        myField.print();
+        gameActive = true;
+    };
 }
 
 move(direction) {
@@ -160,16 +174,16 @@ document.addEventListener("keydown", (e) => {
     const gameStatus = myField.checkStatus();
 
     if (gameStatus === "hat") {
-        gameActive = false;
-        myField.showMessage("You found the hat! Next level...", true); // show button
-        currentLevel++;
-        updateLevelDisplay();
-        // Do NOT auto-hide or auto-reset here!
-    } else if (gameStatus === "hole" || gameStatus === "out") {
-        gameActive = false;
-        myField.showMessage("Game Over!", true);
-    } else if (gameStatus === "safe") {
-        myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
-        myField.print();
-    }
+    gameActive = false;
+    currentLevel++;
+    updateLevelDisplay();
+    myField.showMessage("You found the hat! Next level...", true, true); 
+} else if (gameStatus === "hole" || gameStatus === "out") {
+    gameActive = false;
+    myField.showMessage("Game Over!", true, false); 
+} else if (gameStatus === "safe") {
+    myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
+    myField.print();
+}
+
 });
