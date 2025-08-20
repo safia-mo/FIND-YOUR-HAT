@@ -81,7 +81,7 @@ showMessage(message, showButton = true, isWin = false) {
             myField = new Field(Field.generateField(currentLevel), currentLevel);
             myField.print();
             gameActive = true;
-        }, 1500);
+        }, 750);
     }
 }
 
@@ -109,7 +109,32 @@ checkStatus() {
   } else {
     return "safe";
   }};
+static isPathAvailable(field, startRow, startCol, hatRow, hatCol) {
+  let visited = Array.from({ length: field.length }, () => Array(field[0].length).fill(false));
+  let queue = [[startRow, startCol]];
+  visited[startRow][startCol] = true;
 
+  while (queue.length > 0) {
+    let [r, c] = queue.shift();
+
+    if (r === hatRow && c === hatCol) return true;
+
+    let directions = [[1,0],[-1,0],[0,1],[0,-1]];
+    for (let [dr, dc] of directions) {
+      let nr = r + dr, nc = c + dc;
+      if (
+        nr >= 0 && nr < field.length &&
+        nc >= 0 && nc < field[0].length &&
+        !visited[nr][nc] &&
+        field[nr][nc] !== hole
+      ) {
+        visited[nr][nc] = true;
+        queue.push([nr, nc]);
+      }
+    }
+  }
+  return false;
+}
 static generateField(level = 1) {
   let size = 2 + level;
   let rows = size;
