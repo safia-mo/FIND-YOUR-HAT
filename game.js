@@ -203,6 +203,8 @@ document.addEventListener("keydown", (e) => {
     e.preventDefault(); 
 
     myField.move(direction);
+    
+    document.getElementById("move-sound").play();
 
     const gameStatus = myField.checkStatus();
 
@@ -210,9 +212,11 @@ document.addEventListener("keydown", (e) => {
     gameActive = false;
     currentLevel++;
     updateLevelDisplay();
+    document.getElementById("win-sound").play();
     myField.showMessage("You found the hat! Next level...", false, true); 
 } else if (gameStatus === "hole" || gameStatus === "out") {
     gameActive = false;
+    document.getElementById("lose-sound").play();
     myField.showMessage("Game Over!", true, false); 
 } else if (gameStatus === "safe") {
     myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
