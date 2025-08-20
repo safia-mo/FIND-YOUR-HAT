@@ -1,3 +1,7 @@
+:root { 
+    --board-size : min (55vw, 55vh); 
+}
+
 
 html, body {
     background-color: #026773;
@@ -69,12 +73,13 @@ background-color: #026773;
 
 /* GAME BOARD */
 #game-board {
-  --board-size: min(55vw, 55vh); /* main reference size */
+  --board-size: min(60vw, 60vh); /* main reference size */
   width: var(--board-size);
   aspect-ratio: 1 / 1;
   max-width: 550px;
   max-height: 550px;
   background-color: #23606e;
+  color: #FACFCE;
   box-sizing: border-box;
   border: 4px solid #FACFCE;
   box-shadow: 6px 6px 0 #023535;
@@ -105,6 +110,9 @@ background-color: #026773;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
+  display: block;
+  text-align: center;
+  white-space: normal;
 }
 
 /* HIDE WHEN NEEDED */
