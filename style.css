@@ -100,15 +100,6 @@ background-color: #026773;
   justify-content: center;
   overflow: auto;
 }
-#rules-box{
-  box-sizing: border-box;
-  background: #23606e;
-  color: #FACFCE;
-  box-shadow: 6px 6px 0 #023535;
-  border: 4px solid #FACFCE;
-  width: 80%;
-
-}
 
 .message-box {
   width: 80%;
