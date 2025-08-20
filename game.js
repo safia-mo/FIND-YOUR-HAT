@@ -156,38 +156,37 @@ document.addEventListener("keydown", (e) => {
     if (!myField || !gameActive) return;
 
     let moved = false;
-    if (e.key === "ArrowUp") myField.move("up");
-    if (e.key === "ArrowDown") myField.move("down");
-    if (e.key === "ArrowLeft") myField.move("left");
-    if (e.key === "ArrowRight") myField.move("right");
+    if (e.key === "ArrowUp") { myField.move("up"); moved = true; }
+    if (e.key === "ArrowDown") { myField.move("down"); moved = true; }
+    if (e.key === "ArrowLeft") { myField.move("left"); moved = true; }
+    if (e.key === "ArrowRight") { myField.move("right"); moved = true; }
 
     if (!moved) return;
 
     const gameStatus = myField.checkStatus();
     
     if (gameStatus === "safe") {
+       myField.field[myField.playerRow][myField.playerCol] = pathCharacter;
        myField.print();
 
     } else if (gameStatus === "hat") {
-    myField.showMessage("You found the hat!", false); 
-    gameActive = false;
-    currentLevel++;
-    updateLevelDisplay();
+        myField.showMessage("You found the hat!", false); 
+        gameActive = false;
+        currentLevel++;
+        updateLevelDisplay();
 
-    setTimeout(() => {
-    const overlay = document.getElementById("message-overlay");
-    overlay.classList.add("hidden"); 
-    }, 700);
+        setTimeout(() => {
+            document.getElementById("message-overlay").classList.add("hidden"); 
+        }, 700);
 
-    setTimeout(() => {
-    myField = new Field(Field.generateField(currentLevel), currentLevel);
-    myField.print();
-    gameActive = true;
-    }, 750);
+        setTimeout(() => {
+            myField = new Field(Field.generateField(currentLevel), currentLevel);
+            myField.print();
+            gameActive = true;
+        }, 750);
 
-    }else if (gameStatus === "hole" || status === "out") {
-    myField.showMessage("Game Over!", true);
-    gameActive = false;
-
-   }
+    } else if (gameStatus === "hole" || gameStatus === "out") {
+        myField.showMessage("Game Over!", true);
+        gameActive = false;
+    }
 });
