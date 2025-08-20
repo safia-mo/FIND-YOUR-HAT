@@ -32,31 +32,30 @@ class Field {
     this.playerCol = 0;
     this.level = level;
   }
-  
-print() {
+  print() {
   const grid = document.getElementById("field-grid");
   let columns = this.field[0].length;
   let rows = this.field.length;
 
   const cellWidth = grid.clientWidth / columns;
   const cellHeight = grid.clientHeight / rows;
-  const fontSize = Math.min(cellWidth, cellHeight) * 0.6; // 60% of cell
-
+  const fontSize = Math.min(cellWidth, cellHeight) * 0.8;
   let html = `<div class="field-grid" style="display: grid; width:100%; height:100%; grid-template-columns: repeat(${columns}, 1fr); grid-template-rows: repeat(${rows}, 1fr);">`;
 
-   for (let r = 0; r < rows; r++) {
+  for (let r = 0; r < rows; r++) {
     for (let c = 0; c < columns; c++) {
       let cell = this.field[r][c];
       if (r === this.playerRow && c === this.playerCol) {
         cell = playerIcon; 
       }
-      
 
-  html += '</div>';
+      html += `<div style="font-size:${fontSize}px; display:flex; align-items:center; justify-content:center;">${cell}</div>`;
+    }
+  }
+
+  html += `</div>`;
   grid.innerHTML = html;
 }
-   }
-  }
 
 showMessage(message, showButton = true, isWin = false) {
     document.getElementById("message-text").textContent = message;
@@ -203,7 +202,7 @@ document.addEventListener("keydown", (e) => {
     e.preventDefault(); 
 
     myField.move(direction);
-    
+
     document.getElementById("move-sound").play();
 
     const gameStatus = myField.checkStatus();
