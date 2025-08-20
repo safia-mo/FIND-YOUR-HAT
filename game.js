@@ -13,12 +13,20 @@ function updateLevelDisplay() {
     document.getElementById("level-display").textContent = `Level: ${currentLevel}`;
 }
 
+document.getElementById("start-btn").onclick = function() {
+  document.getElementById("rules-box").classList.add("hidden");
+  myField = new Field(Field.generateField(currentLevel), currentLevel);
+  myField.print();
+  updateLevelDisplay();
+ gameActive = true;
+};
 const startBtn = document.getElementById("start-btn");
 startBtn.onclick = () => {
   myField = new Field(Field.generateField(currentLevel), currentLevel);
   myField.print();
   gameActive = true;
 
+  // Hide overlay if any
   const overlay = document.getElementById("message-overlay");
   overlay.classList.add("hidden");
 };
@@ -142,6 +150,26 @@ static generateField(level = 1) {
 }
 
 };
+
+const startBtn = document.getElementById("start-btn");
+startBtn.onclick = () => {
+   currentLevel = 1;
+   updateLevelDisplay();
+   myField = new Field(Field.generateField(currentLevel), currentLevel);
+   myField.print();
+   gameActive = true;
+   document.getElementById("message-overlay").classList.add("hidden");
+};
+
+const playAgainBtn = document.getElementById("play-again-btn");
+playAgainBtn.onclick = () => {
+   myField = new Field(Field.generateField(currentLevel), currentLevel);
+   myField.print();
+   gameActive = true;
+   document.getElementById("message-overlay").classList.add("hidden");
+};
+
+
 
 document.addEventListener("keydown", (e) => {
     if (!myField || !gameActive) return;
